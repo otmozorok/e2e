@@ -26,6 +26,9 @@ export function provideStoreon(store: StoreonStore) {
 	setContext(STORE, store);
 }
 
+export type State = SceneState & FolderState & PublicKeyState & KeyPairState;
+export type Events = SceneEvents & FolderEvents & PublicKeyEvents & KeyPairEvents;
+
 export function useStoreon<S = State, E = Events>(
 	...keys: (keyof S)[]
 ): Partial<Subscribable<S>> & {
@@ -72,9 +75,6 @@ export function useStoreon<S = State, E = Events>(
 	});
 	return { ...data, dispatch: store.dispatch };
 }
-
-export type State = SceneState & FolderState & PublicKeyState & KeyPairState;
-export type Events = SceneEvents & FolderEvents & PublicKeyEvents & KeyPairEvents;
 
 export const store = createStoreon<State, Events>([
 	scene,

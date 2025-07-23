@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Lottie } from '$lib';
+	import { Article, Button, Lottie } from '$lib';
 	import { exportKey, importKey, readFile, saveFile } from '$lib/utils';
 	import { useStoreon } from '$store';
 	import i18n from '$lib/locales';
@@ -66,14 +66,12 @@
 </script>
 
 <div class="grid place-items-center">
-	<Lottie data={fireSticker} size={200}></Lottie>
-	<div class="grid place-items-center gap-6">
-		<h3 class="text-center text-2xl leading-none">Загрузка ключей</h3>
-		<p class="text-center leading-normal">
-			Загрузите ключи, если они уже есть. Создайте новые, если ключей нет или нужно обновить старые.
-			При создание новых ключей, старые затираются
-		</p>
-	</div>
+	<Lottie data={fireSticker} size={280}></Lottie>
+	<Article
+		title="Загрузка ключей"
+		description="Загрузите ключи, если они уже есть. Создайте новые, если ключей нет или нужно обновить старые.
+			При создание новых ключей, старые затираются"
+	/>
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
 	<Button onclick={onLoadkeys} loading={isLoaded}>

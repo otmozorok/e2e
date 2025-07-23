@@ -1,3 +1,4 @@
+export { default as Article } from './article/index.svelte';
 export { default as Button } from './button/index.svelte';
 export { default as Textarea } from './textarea/index.svelte';
 export { default as Loader } from './loader/index.svelte';

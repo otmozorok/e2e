@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Lottie } from '$lib';
+	import { Article, Button, Lottie } from '$lib';
 	import i18n from '$lib/locales';
 	import { useStoreon } from '$store';
 	import { FolderEvent } from '$store/folder';
@@ -23,13 +23,11 @@
 </script>
 
 <div class="grid place-items-center">
-	<Lottie data={folderSticker} size={200}></Lottie>
-	<div class="grid place-items-center gap-6">
-		<h3 class="text-center text-2xl leading-none">Нужно подключить папку для ключей</h3>
-		<p class="text-center leading-normal">
-			Предоставьте приложению доступ к папке с ключами или к той где вы хотите их создать
-		</p>
-	</div>
+	<Lottie data={folderSticker} size={280}></Lottie>
+	<Article
+		title="Нужно подключить папку для ключей"
+		description="Предоставьте приложению доступ к папке с ключами или к той где вы хотите их создать"
+	/>
 </div>
 
 <div class="grid auto-cols-fr grid-flow-col gap-4">

@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { FlagWidget, FolderWidget, KeysWidget, ProfileWidget, StatusWidget } from '$lib';
+	import {
+		DecodeWidget,
+		EncodeWidget,
+		FlagWidget,
+		FolderWidget,
+		KeysWidget,
+		ProfileWidget,
+		StatusWidget
+	} from '$lib';
 	import { fly } from 'svelte/transition';
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
@@ -27,6 +35,12 @@
 			{/if}
 			{#if $scene === 'profile'}
 				<ProfileWidget />
+			{/if}
+			{#if $scene === 'decode'}
+				<DecodeWidget />
+			{/if}
+			{#if $scene === 'encode'}
+				<EncodeWidget />
 			{/if}
 		</div>
 	{/key}

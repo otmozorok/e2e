@@ -4,5 +4,9 @@
 
 <textarea
 	bind:value
-	class="field-sizing-content min-h-24 w-full resize-none rounded-md border border-gray-300 p-2"
+	{...props}
+	class={[
+		'field-sizing-content min-h-24 w-full resize-none rounded-xl p-4 outline-0 bg-stone-950',
+		props.class
+	]}
 ></textarea>

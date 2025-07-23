@@ -12,7 +12,7 @@ export interface FolderEvents {
 	[FolderEvent.SetFolder]: FileSystemDirectoryHandle;
 }
 
-export let folder: StoreonModule<FolderState, FolderEvents> = (store) => {
+export const folder: StoreonModule<FolderState, FolderEvents> = (store) => {
 	store.on('@init', () => ({
 		folder: null
 	}));

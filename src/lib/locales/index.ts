@@ -1,6 +1,6 @@
 import { I18n } from 'i18n-js';
-import ru from './json/ru.json';
 import en from './json/en.json';
+import ru from './json/ru.json';
 
 const i18n = new I18n({ ru, en });
 

@@ -14,7 +14,7 @@ export interface SceneEvents {
 	[SceneEvent.ChangeScene]: Scene;
 }
 
-export let scene: StoreonModule<SceneState, SceneEvents> = (store) => {
+export const scene: StoreonModule<SceneState, SceneEvents> = (store) => {
 	store.on('@init', () => ({
 		scene: null
 	}));

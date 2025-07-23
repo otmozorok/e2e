@@ -12,7 +12,7 @@ export interface PublicKeyEvents {
 	[PublicKeyEvent.SetPublicKey]: string;
 }
 
-export let publicKey: StoreonModule<PublicKeyState, PublicKeyEvents> = (store) => {
+export const publicKey: StoreonModule<PublicKeyState, PublicKeyEvents> = (store) => {
 	store.on('@init', () => ({
 		publicKey: null
 	}));

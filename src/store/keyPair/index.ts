@@ -12,7 +12,7 @@ export interface KeyPairEvents {
 	[KeyPairEvent.SetKeyPair]: CryptoKeyPair;
 }
 
-export let keyPair: StoreonModule<KeyPairState, KeyPairEvents> = (store) => {
+export const keyPair: StoreonModule<KeyPairState, KeyPairEvents> = (store) => {
 	store.on('@init', () => ({
 		keyPair: null
 	}));

@@ -5,11 +5,11 @@ import {
 	createStoreon
 } from 'storeon';
 import { getContext, setContext } from 'svelte';
-import { storeLogger } from '$lib/utils';
-import { scene, type SceneEvents, type SceneState } from './scene';
 import { folder, type FolderEvents, type FolderState } from './folder';
-import { publicKey, type PublicKeyEvents, type PublicKeyState } from './publicKey';
 import { keyPair, type KeyPairEvents, type KeyPairState } from './keyPair';
+import { publicKey, type PublicKeyEvents, type PublicKeyState } from './publicKey';
+import { scene, type SceneEvents, type SceneState } from './scene';
+import { storeLogger } from '$lib/utils';
 
 const DEV = import.meta.env.MODE === 'development';
 const STORE = typeof Symbol !== 'undefined' ? Symbol('gs') : '@@gs';
@@ -34,7 +34,7 @@ export function useStoreon<S = State, E = Events>(
 ): Partial<Subscribable<S>> & {
 	dispatch: StoreonDispatch<E & createStoreon.DispatchableEvents<S>>;
 } {
-	let store: StoreonStore<S, E> = getContext(STORE);
+	const store: StoreonStore<S, E> = getContext(STORE);
 	if (process.env.NODE_ENV !== 'production' && !store) {
 		throw new Error(
 			'Could not find storeon context value.' +
@@ -42,13 +42,13 @@ export function useStoreon<S = State, E = Events>(
 		);
 	}
 
-	let subscribers: {
+	const subscribers: {
 		[K in keyof S]?: (state: (E & StoreonEvents<S, E>)['@changed'][keyof S]) => void;
 	} = {};
 
-	let makeSubscribable = (key: keyof S) => {
-		let subscribe = (run: Subscriber<S[typeof key]>) => {
-			let state = store.get();
+	const makeSubscribable = (key: keyof S) => {
+		const subscribe = (run: Subscriber<S[typeof key]>) => {
+			const state = store.get();
 
 			subscribers[key] = run;
 			run(state[key]);
@@ -69,7 +69,7 @@ export function useStoreon<S = State, E = Events>(
 		});
 	});
 
-	let data: Partial<Subscribable<S>> = {};
+	const data: Partial<Subscribable<S>> = {};
 	keys.forEach((key) => {
 		data[key] = makeSubscribable(key);
 	});

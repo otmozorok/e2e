@@ -1,5 +1,5 @@
+import type { Events, State } from '$store';
 import type { StoreonStore } from 'storeon';
-import type { Events, State } from '../../store';
 
 export function storeLogger(skip: boolean) {
 	if (skip) return function () {};

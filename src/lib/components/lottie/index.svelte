@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DotLottie } from '@lottiefiles/dotlottie-web';
 
-	let { data, size = 300 } = $props();
+	let { data, size = 300, ...props } = $props();
 
 	let canvas: HTMLCanvasElement;
 
@@ -15,5 +15,10 @@
 	});
 </script>
 
-<canvas bind:this={canvas} width={size} height={size} style="width: {size}px; height: {size}px"
+<canvas
+	bind:this={canvas}
+	width={size}
+	height={size}
+	style="width: {size}px; height: {size}px"
+	{...props}
 ></canvas>

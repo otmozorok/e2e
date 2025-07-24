@@ -5,7 +5,6 @@
 
 	provideStoreon(store);
 
-	// @todo #1a1a1a цвет сверху при открытие, при ошибке #160403
 	$effect(() => {
 		document.documentElement.setAttribute('lang', i18n.locale);
 	});

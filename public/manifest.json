@@ -6,7 +6,7 @@
 	"version": "1",
 	"lang": "ru-RU",
 	"theme_color": "#000000",
-	"background_color": "#00000",
+	"background_color": "#000000",
 	"display": "standalone",
 	"display_override": ["window-controls-overlay"],
 	"orientation": "portrait",

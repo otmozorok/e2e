@@ -34,6 +34,10 @@
 		}
 	}
 
+	async function onCopy() {
+		await navigator.clipboard.writeText(url);
+	}
+
 	$effect(() => {
 		qrCode = new QRCodeStyling({
 			width: size,
@@ -44,7 +48,21 @@
 				errorCorrectionLevel: 'L'
 			},
 			backgroundOptions: {
-				color: 'transparent'
+				round: 0,
+				gradient: {
+					type: 'linear',
+					rotation: 180,
+					colorStops: [
+						{
+							offset: 0,
+							color: '#D52B1E'
+						},
+						{
+							offset: 1,
+							color: '#0039A6'
+						}
+					]
+				}
 			},
 			imageOptions: {
 				margin: 3,
@@ -69,11 +87,14 @@
 	});
 </script>
 
-<div class="grid place-items-center">
-	<div bind:this={qr}></div>
+<div class="grid place-items-center relative gap-3">
+	<div class="qr-wrapper absolute top-0 left-0">
+		<img src="./ramka.png" class="w-full h-full" />
+	</div>
+	<div bind:this={qr} onclick={onCopy} class="cursor-pointer"></div>
 	<div class="grid gap-2">
-		<span class="font-light text-sm text-center">{i18n.t('common.share')}</span>
-		<div class="flex gap-8">
+		<span class="text-sm text-center text-gray-600">{i18n.t('common.share')}</span>
+		<div class="flex gap-8 drop-shadow-black drop-shadow-lg animate-pulse">
 			<DocumentText class="size-8 cursor-pointer" onclick={onShareText} />
 			<QrCode class="size-8 cursor-pointer" onclick={onShareImage} />
 		</div>

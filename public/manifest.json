@@ -1,0 +1,24 @@
+{
+	"name": "E2E Инструмент",
+	"short_name": "E2E",
+	"description": "Шифрует и дешифрует короткие текста",
+	"start_url": "/",
+	"version": "1",
+	"lang": "ru-RU",
+	"theme_color": "#e3e3e3",
+	"background_color": "#e3e3e3",
+	"display": "standalone",
+	"display_override": ["window-controls-overlay"],
+	"orientation": "portrait",
+	"icons": [],
+	"screenshots": [],
+	"capture_links": "existing_client_event",
+	"url_handlers": [
+		{
+			"origin": "https://xn--2-itbb.xn--p1ai/"
+		},
+		{
+			"origin": "e2eapp//"
+		}
+	]
+}

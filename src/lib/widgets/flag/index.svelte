@@ -49,7 +49,8 @@
 
 	{#if show}
 		<div
-			class="bg-[url(./bg.png)] z-20 bg-no-repeat bg-cover bg-center absolute inset-0 opacity-50"
+			style="background-image: url('./bg.png');"
+			class="z-20 bg-no-repeat bg-cover bg-center absolute inset-0 opacity-50"
 			transition:fade
 		></div>
 	{/if}

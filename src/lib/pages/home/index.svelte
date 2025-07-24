@@ -20,14 +20,6 @@
 			e.key === 'Escape' && dispatch(SceneEvent.ChangeScene, null);
 		});
 	});
-
-	$effect(() => {
-		const main = '#4d4d4d';
-		const secondary = '#1a1a1a';
-		const meta = document.head.querySelector('meta[name="theme-color"]');
-
-		meta?.setAttribute('content', $scene === null ? main : secondary);
-	});
 </script>
 
 <main class="grid overflow-hidden grid-rows-[max-content_auto]">

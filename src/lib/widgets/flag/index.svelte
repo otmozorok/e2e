@@ -16,6 +16,14 @@
 		e.preventDefault();
 		show = !show;
 	}
+
+	$effect(() => {
+		const main = show ? '#3e3e3e' : '#4d4d4d';
+		const secondary = show ? '#151515' : '#1a1a1a';
+		const meta = document.head.querySelector('meta[name="theme-color"]');
+
+		meta?.setAttribute('content', $scene === null ? main : secondary);
+	});
 </script>
 
 <div
@@ -50,7 +58,7 @@
 	{#if show}
 		<div
 			style="background-image: url('./bg.png');"
-			class="z-20 bg-no-repeat bg-cover bg-center absolute inset-0 opacity-50"
+			class="z-20 bg-no-repeat bg-cover bg-center absolute inset-0 opacity-20"
 			transition:fade
 		></div>
 	{/if}

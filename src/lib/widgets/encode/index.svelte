@@ -37,9 +37,7 @@
 	}
 
 	onMount(() => {
-		navigator.clipboard.readText().then((res) => {
-			validatePublicKey(res) && (value = res);
-		});
+		navigator.clipboard.readText().then((res) => validatePublicKey(res) && (value = res));
 	});
 </script>
 

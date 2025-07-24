@@ -9,3 +9,4 @@ export * from './saveFile';
 export * from './keyToBase64';
 export * from './storeLogger';
 export * from './validateKey';
+export * from './validateEncodeText';

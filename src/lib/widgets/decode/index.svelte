@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Article, Button, Textarea } from '$lib';
 	import i18n from '$lib/locales';
-	import { base64ToArrayBuffer } from '$lib/utils';
+	import { base64ToArrayBuffer, validateEncodeText } from '$lib/utils';
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
 	import { onMount } from 'svelte';
@@ -34,13 +34,7 @@
 	}
 
 	onMount(() => {
-		navigator.clipboard
-			.readText()
-			.then((res) => {
-				value = res;
-			})
-			.catch()
-			.finally();
+		navigator.clipboard.readText().then((res) => validateEncodeText(res) && (value = res));
 	});
 </script>
 

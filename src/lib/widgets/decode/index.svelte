@@ -45,7 +45,7 @@
 </script>
 
 <div class="grid grid-rows-[auto_max-content] gap-10">
-	<Textarea bind:value placeholder="Текст для расшифровки" autofocus class="max-h-80" />
+	<Textarea bind:value placeholder="Текст для расшифровки" class="max-h-80" />
 	<Article
 		title="Расшифровка вашим приватным ключем"
 		description="Вставьте зашифрованный текст в поле сверху"

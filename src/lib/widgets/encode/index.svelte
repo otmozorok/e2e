@@ -47,7 +47,6 @@
 	<Textarea
 		bind:value
 		placeholder={otherPublickKey ? 'Текст который надо зашифровать' : 'Публичный ключ'}
-		autofocus
 		class="max-h-80"
 	/>
 

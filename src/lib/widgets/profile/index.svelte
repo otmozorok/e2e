@@ -17,10 +17,7 @@
 
 <div class="grid place-items-center">
 	<Qr url={$publicKey!} />
-	<Article
-		title="Ваш публичный ключ"
-		description="Поделитесь публичным ключем с другим человеком и попросите его публичный ключ"
-	/>
+	<Article title={i18n.t('profile.title')} description={i18n.t('profile.description')} />
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
 	<Button onclick={openEncode}>

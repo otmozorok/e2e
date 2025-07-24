@@ -44,13 +44,15 @@
 <div class="grid grid-rows-[auto_max-content] gap-10">
 	<Textarea
 		bind:value
-		placeholder={otherPublickKey ? 'Текст который надо зашифровать' : 'Публичный ключ'}
+		placeholder={otherPublickKey ? 'Текст для шифрования' : 'Введите публичный ключ'}
 		class="max-h-80"
 	/>
 
 	<Article
-		title="Шифровка текста публичным ключем"
-		description={otherPublickKey ? 'Вставьте текст в поле сверху' : 'Вставьте ключ в поле сверху'}
+		title={otherPublickKey ? 'Шифрование текста' : 'Загрузка ключа'}
+		description={otherPublickKey
+			? 'Вставьте текст в поле выше для шифрования'
+			: 'Вставьте публичный ключ получателя в поле выше'}
 	/>
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">

@@ -12,7 +12,7 @@
 		const blob = await qrCode.getRawData('png');
 		const file = new File([blob!], 'qrcode.png', { type: 'image/png' });
 		const data: ShareData = {
-			title: 'My public key',
+			title: i18n.t('profile.title'),
 			files: [file]
 		};
 
@@ -22,10 +22,8 @@
 	}
 
 	async function onShareText() {
-		const blob = await qrCode.getRawData('png');
-		const file = new File([blob!], 'qrcode.png', { type: 'image/png' });
 		const data: ShareData = {
-			title: 'My public key',
+			title: i18n.t('profile.title'),
 			text: url
 		};
 

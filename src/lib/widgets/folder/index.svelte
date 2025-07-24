@@ -24,10 +24,7 @@
 
 <div class="grid place-items-center">
 	<Lottie data={folderSticker} size={280}></Lottie>
-	<Article
-		title="Нужно подключить папку для ключей"
-		description="Предоставьте приложению доступ к папке с ключами или к той где вы хотите их создать"
-	/>
+	<Article title={i18n.t('folder.title')} description={i18n.t('folder.description')} />
 </div>
 
 <div class="grid auto-cols-fr grid-flow-col gap-4">

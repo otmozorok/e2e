@@ -67,11 +67,7 @@
 
 <div class="grid place-items-center">
 	<Lottie data={fireSticker} size={280}></Lottie>
-	<Article
-		title="Загрузка ключей"
-		description="Загрузите ключи, если они уже есть. Создайте новые, если ключей нет или нужно обновить старые.
-			При создание новых ключей, старые затираются"
-	/>
+	<Article title={i18n.t('keys.title')} description={i18n.t('keys.description')} />
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
 	<Button onclick={onLoadkeys} loading={isLoaded}>

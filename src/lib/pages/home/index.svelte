@@ -12,7 +12,7 @@
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
 
-	let { scene, folder, dispatch } = useStoreon('scene', 'folder');
+	let { scene, dispatch } = useStoreon('scene');
 
 	/** @todo Удалить */
 	$effect(() => {
@@ -21,18 +21,12 @@
 		});
 	});
 
-	// @todo #1a1a1a цвет сверху при открытие, при ошибке #160403
 	$effect(() => {
 		const main = '#4d4d4d';
 		const secondary = '#1a1a1a';
-		const negative = '#160403';
 		const meta = document.head.querySelector('meta[name="theme-color"]');
 
-		if ($scene === null) {
-			meta?.setAttribute('content', main);
-		} else {
-			meta?.setAttribute('content', secondary);
-		}
+		meta?.setAttribute('content', $scene === null ? main : secondary);
 	});
 </script>
 
@@ -59,4 +53,5 @@
 		</div>
 	{/key}
 </main>
+
 <FlagWidget />

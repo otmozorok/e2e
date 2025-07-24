@@ -30,11 +30,11 @@
 	});
 </script>
 
-<main class="grid grid-rows-[max-content_auto] overflow-hidden">
+<main class="grid overflow-hidden">
 	<StatusWidget />
 
 	{#key $scene}
-		<div class="grid h-full grid-rows-[auto_max-content] gap-4 p-6 pt-8" in:fly={{ y: 200 }}>
+		<div class="grid grid-rows-[auto_max-content] gap-4 p-6 pt-8" in:fly={{ y: 200 }}>
 			{#if $scene === 'folder'}
 				<FolderWidget />
 			{/if}

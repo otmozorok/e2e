@@ -1,6 +1,5 @@
 <script lang="ts">
-	export const ssr = false;
-	import { Button } from '$lib';
+	import { DocumentText, QrCode } from '$lib';
 	import i18n from '$lib/locales';
 	import QRCodeStyling from 'qr-code-styling';
 
@@ -9,17 +8,28 @@
 	let qr: HTMLDivElement;
 	let qrCode: QRCodeStyling;
 
-	async function onClick() {
+	async function onShareImage() {
 		const blob = await qrCode.getRawData('png');
 		const file = new File([blob!], 'qrcode.png', { type: 'image/png' });
-		const data = {
-			title: 'Scan this QR Code',
+		const data: ShareData = {
+			title: 'My public key',
 			files: [file]
 		};
 
 		if (navigator?.share && navigator?.canShare?.(data)) {
-			console.log(file);
+			await navigator.share(data);
+		}
+	}
 
+	async function onShareText() {
+		const blob = await qrCode.getRawData('png');
+		const file = new File([blob!], 'qrcode.png', { type: 'image/png' });
+		const data: ShareData = {
+			title: 'My public key',
+			text: url
+		};
+
+		if (navigator?.share && navigator?.canShare?.(data)) {
 			await navigator.share(data);
 		}
 	}
@@ -59,7 +69,13 @@
 	});
 </script>
 
-<div class="grid place-items-center gap-4">
+<div class="grid place-items-center">
 	<div bind:this={qr}></div>
-	<Button onclick={onClick}>{i18n.t('common.share')}</Button>
+	<div class="grid gap-2">
+		<span class="font-light text-sm text-center">{i18n.t('common.share')}</span>
+		<div class="flex gap-8">
+			<DocumentText class="size-8 cursor-pointer" onclick={onShareText} />
+			<QrCode class="size-8 cursor-pointer" onclick={onShareImage} />
+		</div>
+	</div>
 </div>

@@ -3,7 +3,6 @@
 	import { exportKey, importKey, readFile, saveFile } from '$lib/utils';
 	import { useStoreon } from '$store';
 	import i18n from '$lib/locales';
-	import { FolderEvent } from '$store/folder';
 	import { SceneEvent } from '$store/scene';
 	import fireSticker from '$lib/stickers/fire.json';
 	import { PublicKeyEvent } from '$store/publicKey';

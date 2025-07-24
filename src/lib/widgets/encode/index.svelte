@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Article, Button, Textarea } from '$lib';
 	import i18n from '$lib/locales';
+	import { arrayBufferToBase64, importKey, validatePublicKey } from '$lib/utils';
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
 	import { onMount } from 'svelte';
@@ -8,32 +9,64 @@
 	let { dispatch } = useStoreon();
 
 	let value = $state('');
+	let otherPublickKey = $state<CryptoKey | null>(null);
 
 	function back() {
 		dispatch(SceneEvent.ChangeScene, 'profile');
 	}
 
+	async function saveKey() {
+		if (validatePublicKey(value)) {
+			otherPublickKey = await importKey(value, 'spki', ['encrypt']);
+			value = '';
+		}
+	}
+
+	async function onEncode() {
+		if (!otherPublickKey || !value) return;
+		try {
+			const encoder = new TextEncoder();
+			const data = encoder.encode(value);
+
+			const encrypted = await crypto.subtle.encrypt({ name: 'RSA-OAEP' }, otherPublickKey, data);
+
+			const base64String = arrayBufferToBase64(encrypted);
+
+			value = base64String;
+		} catch (error) {}
+	}
+
 	onMount(() => {
-		navigator.clipboard
-			.readText()
-			.then((res) => {
-				value = res;
-			})
-			.catch()
-			.finally();
+		navigator.clipboard.readText().then((res) => {
+			validatePublicKey(res) && (value = res);
+		});
 	});
 </script>
 
 <div class="grid grid-rows-[auto_max-content] gap-10">
-	<Textarea bind:value placeholder="Публичный ключ" autofocus class="max-h-80" />
+	<Textarea
+		bind:value
+		placeholder={otherPublickKey ? 'Текст который надо зашифровать' : 'Публичный ключ'}
+		autofocus
+		class="max-h-80"
+	/>
 
-	<Article title="Шифровка текста публичным ключем" description="Вставьте текст в поле сверху" />
+	<Article
+		title="Шифровка текста публичным ключем"
+		description={otherPublickKey ? 'Вставьте текст в поле сверху' : 'Вставьте ключ в поле сверху'}
+	/>
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
 	<Button onclick={back}>
 		{i18n.t('common.back')}
 	</Button>
-	<Button onclick={back}>
-		{i18n.t('common.back')}
-	</Button>
+	{#if otherPublickKey}
+		<Button onclick={onEncode}>
+			{i18n.t('common.encode')}
+		</Button>
+	{:else}
+		<Button onclick={saveKey}>
+			{i18n.t('common.save')}
+		</Button>
+	{/if}
 </div>

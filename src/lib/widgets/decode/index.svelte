@@ -1,16 +1,36 @@
 <script lang="ts">
 	import { Article, Button, Textarea } from '$lib';
 	import i18n from '$lib/locales';
+	import { base64ToArrayBuffer } from '$lib/utils';
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
 	import { onMount } from 'svelte';
 
-	let { dispatch } = useStoreon();
+	let { keyPair, dispatch } = useStoreon('keyPair');
 
 	let value = $state('');
 
 	function back() {
 		dispatch(SceneEvent.ChangeScene, 'profile');
+	}
+
+	async function onDecode() {
+		if (!$keyPair || !value) return;
+		try {
+			// Конвертация из Base64
+			const encryptedData = base64ToArrayBuffer(value.trim());
+
+			const decrypted = await crypto.subtle.decrypt(
+				{ name: 'RSA-OAEP' },
+				$keyPair.privateKey,
+				encryptedData
+			);
+
+			const decoder = new TextDecoder();
+			const decryptedText = decoder.decode(decrypted);
+
+			value = decryptedText;
+		} catch (error) {}
 	}
 
 	onMount(() => {
@@ -35,7 +55,7 @@
 	<Button onclick={back}>
 		{i18n.t('common.back')}
 	</Button>
-	<Button onclick={back}>
-		{i18n.t('common.back')}
+	<Button onclick={onDecode}>
+		{i18n.t('common.decode')}
 	</Button>
 </div>

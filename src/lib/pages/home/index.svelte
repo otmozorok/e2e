@@ -30,7 +30,7 @@
 	});
 </script>
 
-<main class="grid overflow-hidden">
+<main class="grid overflow-hidden grid-rows-[max-content_auto]">
 	<StatusWidget />
 
 	{#key $scene}

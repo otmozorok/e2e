@@ -49,11 +49,12 @@
 				['encrypt', 'decrypt']
 			);
 
-			dispatch(KeyPairEvent.SetKeyPair, newKeyPair);
-			dispatch(SceneEvent.ChangeScene, 'profile');
-
 			const exportedPublic = await exportKey(newKeyPair.publicKey, 'spki');
 			const exportedPrivate = await exportKey(newKeyPair.privateKey, 'pkcs8');
+
+			dispatch(PublicKeyEvent.SetPublicKey, exportedPublic);
+			dispatch(KeyPairEvent.SetKeyPair, newKeyPair);
+			dispatch(SceneEvent.ChangeScene, 'profile');
 
 			await saveFile('publicKey.pem', exportedPublic, $folder);
 			await saveFile('privateKey.pem', exportedPrivate, $folder);

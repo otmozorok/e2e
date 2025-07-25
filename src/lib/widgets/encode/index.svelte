@@ -11,10 +11,6 @@
 	let value = $state('');
 	let otherPublickKey = $state<CryptoKey | null>(null);
 
-	function back() {
-		dispatch(SceneEvent.ChangeScene, 'profile');
-	}
-
 	async function saveKey() {
 		if (validatePublicKey(value)) {
 			otherPublickKey = await importKey(value, 'spki', ['encrypt']);
@@ -56,9 +52,6 @@
 	/>
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
-	<Button onclick={back}>
-		{i18n.t('common.back')}
-	</Button>
 	{#if otherPublickKey}
 		<Button onclick={onEncode}>
 			{i18n.t('common.encode')}

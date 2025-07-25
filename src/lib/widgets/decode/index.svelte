@@ -10,10 +10,6 @@
 
 	let value = $state('');
 
-	function back() {
-		dispatch(SceneEvent.ChangeScene, 'profile');
-	}
-
 	async function onDecode() {
 		if (!$keyPair || !value) return;
 		try {
@@ -46,9 +42,6 @@
 	/>
 </div>
 <div class="grid auto-cols-fr grid-flow-col gap-4">
-	<Button onclick={back}>
-		{i18n.t('common.back')}
-	</Button>
 	<Button onclick={onDecode}>
 		{i18n.t('common.decode')}
 	</Button>

@@ -32,7 +32,8 @@
 		}
 	}
 
-	async function onCopy() {
+	async function onCopy(e: Event) {
+		e.preventDefault();
 		await navigator.clipboard.writeText(url);
 	}
 
@@ -89,7 +90,7 @@
 	<div class="qr-wrapper absolute top-0 left-0">
 		<img src="./ramka.png" class="w-full h-full" />
 	</div>
-	<div bind:this={qr} onclick={onCopy} class="cursor-pointer"></div>
+	<div bind:this={qr} oncontextmenu={onCopy} class="cursor-pointer"></div>
 	<div class="grid gap-2 text-gray-600">
 		<span class="text-sm text-center">{i18n.t('common.share')}</span>
 		<div class="flex gap-8 drop-shadow-black drop-shadow-lg">

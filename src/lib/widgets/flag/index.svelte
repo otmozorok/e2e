@@ -68,7 +68,7 @@
 
 	{#if show}
 		<div
-			style="background-image: url('./bg.png');"
+			style="background-image: url('./bg.webp');"
 			class="z-20 bg-no-repeat bg-cover bg-center absolute inset-0 opacity-20"
 			transition:fade
 		></div>

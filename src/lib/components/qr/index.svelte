@@ -90,9 +90,9 @@
 		<img src="./ramka.png" class="w-full h-full" />
 	</div>
 	<div bind:this={qr} onclick={onCopy} class="cursor-pointer"></div>
-	<div class="grid gap-2">
-		<span class="text-sm text-center text-gray-600">{i18n.t('common.share')}</span>
-		<div class="flex gap-8 drop-shadow-black drop-shadow-lg animate-pulse">
+	<div class="grid gap-2 text-gray-600">
+		<span class="text-sm text-center">{i18n.t('common.share')}</span>
+		<div class="flex gap-8 drop-shadow-black drop-shadow-lg">
 			<DocumentText class="size-8 cursor-pointer" onclick={onShareText} />
 			<QrCode class="size-8 cursor-pointer" onclick={onShareImage} />
 		</div>

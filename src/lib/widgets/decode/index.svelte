@@ -3,10 +3,9 @@
 	import i18n from '$lib/locales';
 	import { base64ToArrayBuffer, validateEncodeText } from '$lib/utils';
 	import { useStoreon } from '$store';
-	import { SceneEvent } from '$store/scene';
 	import { onMount } from 'svelte';
 
-	let { keyPair, dispatch } = useStoreon('keyPair');
+	let { keyPair } = useStoreon('keyPair');
 
 	let value = $state('');
 

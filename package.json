@@ -16,7 +16,6 @@
 		"@tailwindcss/vite": "^4.1.11",
 		"@tsconfig/svelte": "^5.0.0",
 		"@types/node": "^24.1.0",
-		"@types/wicg-file-system-access": "^2023.10.6",
 		"eslint": "^9.31.0",
 		"eslint-plugin-import-x": "^4.16.1",
 		"globals": "^16.3.0",
@@ -32,6 +31,7 @@
 	"dependencies": {
 		"@lottiefiles/dotlottie-web": "^0.48.0",
 		"@storeon/localstorage": "^1.5.0",
+		"file-system-access": "^1.0.4",
 		"i18n-js": "^4.5.1",
 		"qr-code-styling": "^1.9.2",
 		"storeon": "^3.1.5"

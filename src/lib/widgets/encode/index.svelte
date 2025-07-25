@@ -2,11 +2,7 @@
 	import { Article, Button, Textarea } from '$lib';
 	import i18n from '$lib/locales';
 	import { arrayBufferToBase64, importKey, validatePublicKey } from '$lib/utils';
-	import { useStoreon } from '$store';
-	import { SceneEvent } from '$store/scene';
 	import { onMount } from 'svelte';
-
-	let { dispatch } = useStoreon();
 
 	let value = $state('');
 	let otherPublickKey = $state<CryptoKey | null>(null);

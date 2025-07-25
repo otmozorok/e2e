@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Article, Button, Lottie } from '$lib';
+	import { showDirectoryPicker } from 'file-system-access';
 	import i18n from '$lib/locales';
 	import { useStoreon } from '$store';
 	import { FolderEvent } from '$store/folder';
@@ -11,11 +12,7 @@
 	let isLoaded = $state(false);
 
 	async function onOpenDir() {
-		const openDir = await window.showDirectoryPicker({
-			id: 'cryptoKeysFolder',
-			startIn: 'documents',
-			mode: 'readwrite'
-		});
+		const openDir = await showDirectoryPicker();
 
 		dispatch(FolderEvent.SetFolder, openDir);
 		dispatch(SceneEvent.ChangeScene, 'keys');

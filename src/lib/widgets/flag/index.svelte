@@ -1,15 +1,20 @@
 <script lang="ts">
 	import { useStoreon } from '$store';
 	import { SceneEvent } from '$store/scene';
+	import { onMount } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
 
-	let { scene, folder, dispatch } = useStoreon('scene', 'folder');
+	let { scene, folder, keyPair, dispatch } = useStoreon('scene', 'folder', 'keyPair');
 
 	let show = $state(false);
-	let open = $derived(!!$folder || !!$scene);
+	let open = $derived(!!$scene);
 
 	function openFolder() {
 		dispatch(SceneEvent.ChangeScene, 'folder');
+	}
+
+	function openProfile() {
+		dispatch(SceneEvent.ChangeScene, 'profile');
 	}
 
 	function secretAction(e: Event) {
@@ -23,6 +28,12 @@
 		const meta = document.head.querySelector('meta[name="theme-color"]');
 
 		meta?.setAttribute('content', $scene === null ? main : secondary);
+	});
+
+	onMount(() => {
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && $folder && $keyPair) dispatch(SceneEvent.ChangeScene, null);
+		});
 	});
 </script>
 
@@ -43,7 +54,7 @@
 			class="absolute z-30 cursor-pointer transition-all duration-300 drop-shadow-2xl active:scale-105"
 			alt=""
 			transition:scale={{ duration: 100 }}
-			onclick={openFolder}
+			onclick={$folder && $keyPair ? openProfile : openFolder}
 			oncontextmenu={secretAction}
 		/>
 	{/if}

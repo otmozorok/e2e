@@ -6,3 +6,4 @@ export { default as DecodeOutline } from './decode-outline.svelte';
 export { default as EncodeOutline } from './encode-outline.svelte';
 export { default as DocumentText } from './document-text.svelte';
 export { default as QrCode } from './qr-code.svelte';
+export { default as ClipboardCheck } from './clipboard-check.svelte';

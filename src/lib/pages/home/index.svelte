@@ -10,16 +10,8 @@
 	} from '$lib';
 	import { fly } from 'svelte/transition';
 	import { useStoreon } from '$store';
-	import { SceneEvent } from '$store/scene';
 
-	let { scene, dispatch } = useStoreon('scene');
-
-	/** @todo Удалить */
-	$effect(() => {
-		document.addEventListener('keydown', (e) => {
-			e.key === 'Escape' && dispatch(SceneEvent.ChangeScene, null);
-		});
-	});
+	let { scene } = useStoreon('scene');
 </script>
 
 <main class="grid overflow-hidden grid-rows-[max-content_auto]">
